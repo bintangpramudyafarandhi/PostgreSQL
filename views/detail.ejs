@@ -1,0 +1,29 @@
+<style>
+    /* .btn {
+        margin-left: 1px;
+        margin-right: 1px;
+    } */
+
+    .card-header {
+      font-size: 20px;
+      font-weight: 600;
+    }
+</style>
+
+<div class="container w-25">
+  <div class="card border-primary mb-3 mt-3 m-auto">
+    <div class="card-header text-dark m-auto">Contact Detail</div>
+    <% getDetail.forEach(elm => { %>
+      <div class="card-body m-auto">
+        <p class="card-text">Name : <%=elm.Name%> </p>
+        <p class="card-text">Email : <%=elm.Email%> </p>
+        <p class="card-text">Mobile : <%=elm.Mobile%> </p>
+        <form action="/delete/<%= elm.Name %>" method="post">
+          <a class="btn btn-primary" href="/edit/<%= elm.Name %> ">Edit</a>
+          <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete <%= elm.Name %>?')">Delete</button>
+          <input type="hidden" name="dlt" value="<%= elm.Name %>" >
+        </form>
+      </div>
+    <% }) %>
+  </div>
+</div>
